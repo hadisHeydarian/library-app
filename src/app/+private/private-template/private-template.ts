@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from "@angular/router";
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink, RouterOutlet } from "@angular/router";
 
 @Component({
   selector: 'app-private-template',
@@ -8,8 +8,11 @@ import { RouterLink, RouterOutlet } from "@angular/router";
   styleUrl: './private-template.scss',
 })
 export class PrivateTemplate {
-logoff() {
-throw new Error('Method not implemented.');
-}
+  router=inject(Router);
+  logoff() {
+    sessionStorage.clear();
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('/login');
+  }
 
 }
