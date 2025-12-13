@@ -1,1 +1,30 @@
-<p>books-page works!</p>
+<div>
+    <button (click)="add()">افزودن</button>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>شناسه</th>
+            <th>عنوان</th>
+            <th>نویسنده</th>
+            <th>ناشر</th>
+            <th>قیمت</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (book of data; track $index) {
+        <tr>
+            <td>{{book.id}}</td>
+            <td>{{book.titel}}</td>
+            <td>{{book.writer}}</td>
+            <td>{{book.publisher}}</td>
+            <td>{{book.price}}</td>
+            <td>
+                <button>ویرایش</button>
+                <button>حذف</button>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
