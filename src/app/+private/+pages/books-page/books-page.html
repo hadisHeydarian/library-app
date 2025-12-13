@@ -1,3 +1,4 @@
+@if (action=='list') {
 <div>
     <button (click)="add()">افزودن</button>
 </div>
@@ -19,7 +20,7 @@
             <td>{{book.titel}}</td>
             <td>{{book.writer}}</td>
             <td>{{book.publisher}}</td>
-            <td>{{book.price}}</td>
+            <td>{{book.price | number}} تومان</td>
             <td>
                 <button>ویرایش</button>
                 <button>حذف</button>
@@ -28,3 +29,28 @@
     }
     </tbody>
 </table>
+}
+@else {
+    <form (ngSubmit)="save()">
+    <div>
+        <input [(ngModel)]="item.id" id="id" name="id" type="number" placeholder="شناسه">
+    </div>
+    <div>
+        <input [(ngModel)]="item.titel" id="titel" name="titel" type="text" placeholder="عنوان">
+    </div>
+    <div>
+        <input [(ngModel)]="item.writer" id="writer" name="writer" type="text" placeholder="نویسنده">
+    </div>
+    <div>
+        <input [(ngModel)]="item.publisher" id="publisher" name="publisher" type="text" placeholder="ناشر">
+    </div>
+    <div>
+        <input [(ngModel)]="item.price" id="price" name="price" type="number" placeholder="قیمت">
+    </div>
+    <div>
+        <button type="submit">تایید</button>
+        <button (click)="cancel()" type="button">انصراف</button>
+    </div>
+</form>
+
+}
