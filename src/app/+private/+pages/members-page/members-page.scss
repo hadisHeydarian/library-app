@@ -1,0 +1,29 @@
+table{
+    width: 100%;
+    border-collapse: collapse;
+    tr{
+        border-bottom: 1px solid rgb(19, 40, 225);
+    }
+    tr:nth-of-type(2n+1){
+        background-color: rgb(203, 199, 255);
+    }
+    td,th{
+        text-align: right;
+        padding: 0.3em;
+    }
+    th{
+        background-color: rgb(19, 40, 225);
+        color: white;
+    }
+    td:last-of-type{
+        text-align: left;
+    }
+}
+button{
+    background-color: rgb(88, 88, 255);
+    color: white;
+    padding: 0.2em 0.4em;
+    border: none;
+    border-radius: 0.3em;
+    margin: 0.2em;
+}

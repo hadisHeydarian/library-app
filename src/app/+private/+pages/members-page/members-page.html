@@ -1,1 +1,56 @@
-<p>members-page works!</p>
+@if (action=='list') {
+<div>
+    <button (click)="add()">افزودن</button>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>شناسه</th>
+            <th>نام و نام خانوادگی</th>
+            <th>ادرس</th>
+            <th>کد ملی</th>
+            <th>تلفن</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (book of data; track $index) {
+        <tr>
+            <td>{{book.id}}</td>
+            <td>{{book.name}}</td>
+            <td>{{book.address}}</td>
+            <td>{{book.national}}</td>
+            <td>{{book.phone}}</td>
+            <td>
+                <button>ویرایش</button>
+                <button>حذف</button>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+}
+@else {
+    <form (ngSubmit)="save()">
+    <div>
+        <input [(ngModel)]="item.id" id="id" name="id" type="number" placeholder="شناسه">
+    </div>
+    <div>
+        <input [(ngModel)]="item.name" id="name" name="name" type="text" placeholder="نام و نام خانوادگی">
+    </div>
+    <div>
+        <input [(ngModel)]="item.address" id="address" name="address" type="text" placeholder="ادرس">
+    </div>
+    <div>
+        <input [(ngModel)]="item.national" id="national" name="national" type="text" placeholder="کد ملی">
+    </div>
+    <div>
+        <input [(ngModel)]="item.phone" id="phone" name="phone" type="number" placeholder="شماره تلفن">
+    </div>
+    <div>
+        <button type="submit">تایید</button>
+        <button (click)="cancel()" type="button">انصراف</button>
+    </div>
+</form>
+
+}
