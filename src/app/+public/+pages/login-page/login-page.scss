@@ -1,0 +1,43 @@
+:host{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: rgb(153, 183, 210);
+}
+.login{
+    width: 230px;
+    background-color: azure;
+    padding: 1.3em;
+    border: 1px solid gray;
+    border-radius: 0.3em;
+    box-shadow: 0 0 0.8em 0.2em gray ;
+    div{
+        margin: 0.5em 0;
+        input[type=text],input[type=password]{
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0.4em;
+        }
+        input:focus{
+           outline: none; 
+        }
+    }
+    lable:not(:last-child){
+        display: block;
+    }
+    .bottom{
+        margin: 0.5em 0;
+        width: 100%;
+        background-color: rgb(104, 104, 224);
+        padding: 0.4em;
+        border: none;
+        border-radius: 0.5em;
+    }
+}
+.message{
+    background-color: rgb(253, 193, 129);
+    color: rgba(61, 60, 55, 0.785);
+    padding: 0.4em;
+    border-radius: 0.3em;
+}

@@ -30,6 +30,13 @@ export class MembersPage implements OnInit{
   }
   add(){
     this.action='add';
+    this.item = {
+    id:0,
+    name:'',
+    address:'',
+    national:'',
+    phone:0,
+  }
   }
   cancel() {
   this.action=='list'

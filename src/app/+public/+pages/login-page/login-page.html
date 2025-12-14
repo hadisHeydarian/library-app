@@ -1,4 +1,4 @@
-<div>
+<div class="login">
     <form (ngSubmit)="check()">
         <div>
             <label for="userName">نام کاربری</label>
@@ -14,10 +14,10 @@
             <label for="keepMe">من را به خاطر بسپار</label>
         </div>
         <div>
-            <button [disabled]="loginForm.userName=='' || loginForm.password==''" type="submit">ورود</button>
+            <button class="button" [disabled]="loginForm.userName=='' || loginForm.password==''" type="submit">ورود</button>
         </div>
         @if(message!=''){
-            <div>
+            <div class="message">
                 {{message}}
             </div>
         }
