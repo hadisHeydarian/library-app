@@ -9,7 +9,7 @@ import { DecimalPipe } from '@angular/common';
   styleUrl: './books-page.scss',
 })
 export class BooksPage implements OnInit {
-
+  
   booksService = inject(BooksService);
   data: BookItem[] = [];
   action: string = 'list';
@@ -30,26 +30,42 @@ export class BooksPage implements OnInit {
   add() {
     this.action = 'add';
     this.item = {
-    id: 0,
-    titel: '',
-    writer: '',
-    publisher: '',
-    price: 0,
+      id: 0,
+      titel: '',
+      writer: '',
+      publisher: '',
+      price: 0,
+    }
   }
+  edit(book: BookItem) {
+    this.item = { ...book}
+    this.action = 'edit'
+  }
+  remove(book:BookItem){
+    this.item={...book};
+    this.action='remove'
   }
   cancel() {
     this.action == 'list'
   }
   save() {
-    this.booksService.add(this.item);
+    if (this.action == 'add') {
+      this.booksService.add(this.item);
+    }
+    else if (this.action == 'edit') {
+      this.booksService.update(this.item);
+    }
+    else if(this.action=='remove'){
+      this.booksService.remove(this.item);
+    }
     this.refreshData();
     this.action = 'list';
   }
 }
 export interface BookItem {
-  id: number;
+  id?: number;
   titel: string;
   writer: string;
   publisher: string;
-  price: number;
+  price?: number;
 }
