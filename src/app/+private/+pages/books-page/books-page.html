@@ -46,7 +46,7 @@
 }
 <form (ngSubmit)="save()">
     <div [class.makhfi]="action=='edit'">
-        <input [disabled]="action=='edit'" [disabled]="action=='edit' || action=='remove'" [(ngModel)]="item.id" id="id" name="id" type="number" placeholder="شناسه">
+        <input [disabled]="action=='edit' || action=='remove'" [(ngModel)]="item.id" id="id" name="id" type="number" placeholder="شناسه">
     </div>
     <div>
         <input [disabled]="action=='remove'" [(ngModel)]="item.titel" id="titel" name="titel" type="text" placeholder="عنوان">
@@ -62,7 +62,7 @@
     </div>
     <div>
         <button type="submit">تایید</button>
-        <button (click)="cancel()" type="button">انصراف</button>
+        <button (click)="cancel()">انصراف</button>
     </div>
 </form>
 

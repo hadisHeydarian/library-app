@@ -46,7 +46,7 @@ export class BooksPage implements OnInit {
     this.action='remove'
   }
   cancel() {
-    this.action == 'list'
+    this.action = 'list'
   }
   save() {
     if (this.action == 'add') {

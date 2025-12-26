@@ -19,6 +19,15 @@ table{
         text-align: left;
     }
 }
+form{
+    background-color: rgb(189, 189, 255);
+    color: white;
+    padding: 0.2em 0.4em;
+    border: none;
+    border-radius: 0.3em;
+    margin: 0.2em;
+}
+
 button{
     background-color: rgb(88, 88, 255);
     color: white;
@@ -26,4 +35,14 @@ button{
     border: none;
     border-radius: 0.3em;
     margin: 0.2em;
+}
+.makhfi{
+    background-color: rgb(252, 106, 128);
+    color: white;
+    width: 10.5em;
+}
+th{
+    input{
+        width: 100%;
+    }
 }
