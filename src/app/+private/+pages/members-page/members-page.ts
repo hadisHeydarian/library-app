@@ -2,75 +2,49 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MembersService } from './members-service';
 import { FormsModule } from '@angular/forms';
 import { DecimalPipe } from '@angular/common';
+import { Thing } from '../../../+shared/+base/base-thing';
+import { BaseCRUDServise } from '../../../+shared/+base/base-service';
+import { BaseCrudComponent, Column } from '../../../+shared/+base/base-crud-component/base-crud-component';
+import { BassCRUDPage } from '../../../+shared/+base/base-page';
 
 @Component({
   selector: 'app-members-page',
-  imports: [FormsModule, DecimalPipe],
+  imports: [FormsModule, BaseCrudComponent],
   templateUrl: './members-page.html',
   styleUrl: './members-page.scss',
 })
-export class MembersPage implements OnInit {
-
-  membersService = inject(MembersService);
-  data: MembersItem[] = [];
-  action: string = 'list';
-  item: MembersItem = {
-    id: 0,
-    name: '',
-    address: '',
-    national: '',
-    phone: 0,
-  }
-
+export class MembersPage extends BassCRUDPage<MembersItem> implements OnInit {
+  override dataServise = inject(MembersService);
   ngOnInit(): void {
     this.refreshData();
-  }
-  refreshData() {
-    this.data = this.membersService.list();
-  }
-
-  add() {
-    this.action = 'add';
     this.item = {
-      id: 0,
       name: '',
       address: '',
       national: '',
-      phone: 0,
-    }
+      phone: ''
+    };
   }
-  edit(member:MembersItem) {
-    this.item = { ...member}
-    this.action = 'edit'
+  override addPrepair(): void {
+    this.item = {
+      name: '',
+      address: '',
+      national: '',
+      phone: ''
+    };
   }
-  remove(member:MembersItem) {
-    this.item = { ...member};
-    this.action = 'remove'
+    colunmns: Column[] = [
+      { field: 'id', title: 'شناسه' },
+      { field: 'name', title: 'نام' },
+      { field: 'address', title: 'ادرس' },
+      { field: 'national', title: 'کدملی' },
+      { field: 'phone', title: 'تلفن' },
+    ]
   }
-  cancel() {
-    this.action = 'list'
-  }
-  save() {
-    if (this.action == 'add') {
-    this.membersService.add(this.item);
+  
+
+    export interface MembersItem extends Thing {
+      name: string;
+      address: string;
+      national: string;
+      phone: string;
     }
-     else if (this.action == 'edit') {
-      this.membersService.update(this.item);
-    }
-    else if (this.action == 'edit') {
-      this.membersService.update(this.item);
-    }
-    else if(this.action=='remove'){
-      this.membersService.remove(this.item);
-    }
-    this.refreshData();
-    this.action = 'list';
-  }
-}
-export interface MembersItem {
-  id?: number;
-  name: string;
-  address: string;
-  national: string;
-  phone?: number;
-}
