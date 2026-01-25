@@ -6,7 +6,7 @@
     <thead>
         <tr>
             @for (col of columns; track $index) {
-            <tr> {{col.title}} </tr>
+            <th> {{col.title}} </th>
             }
             <th></th>
         </tr>
@@ -18,8 +18,8 @@
                 <td>{{i[col.field]}}</td>
             }
             <td>
-                <button (click)="onEdit.emit()">ویرایش</button>
-                <button (click)="onRemove.emit()">حذف</button>
+                <button (click)="onEdit.emit(i)">ویرایش</button>
+                <button (click)="onRemove.emit(i)">حذف</button>
             </td>
         </tr>
         }
@@ -34,8 +34,8 @@
 }
 <form (ngSubmit)="onSave.emit()">
     <ng-content></ng-content>
-    <div>
-        <button (click)="onSave.emit()" type="button">تایید</button>
+    <div class="SaveAndCancel">
+        <button (click)="onSave.emit()" type="submit">تایید</button>
         <button (click)="onCancel.emit()" type="button">انصراف</button>
     </div>
 </form>
